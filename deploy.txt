@@ -1,0 +1,21 @@
+como fazer deploy de aplicação spring com .jar
+mvn build clean package
+verificar nome gerado do jar
+exportar as variaveis de ambiente para serem utilizados no application-prod.properties
+rodar javar -jar nomeAplicacao.jar -Dspring.profiles.active=prod
+
+deploy com .war
+adicionar no pom
+	<packaging>war</>
+	dependency tomcar -> <scope>provided</>
+	
+classe main, extender de SpringBootServletInitializer
+override configure
+	
+	
+	
+docker
+
+docker build -t alura/forum .
+
+docker run -p 9562:9562 -e SPRING_PROFILES_ACTIVE='prod' -e FORUM_DATABASE_URL='jdbc:h2:mem:alura-forum' -e FORUM_DATABASE_PASSWORD='' -e FORUM_DATABASE_USERNAME='sa' -e FORUM_SECRET='123456' alura/forum

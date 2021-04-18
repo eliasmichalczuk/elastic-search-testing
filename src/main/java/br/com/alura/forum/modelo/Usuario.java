@@ -17,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Usuario implements UserDetails {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,6 +25,9 @@ public class Usuario implements UserDetails {
 	private String senha;
 
 	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(name ="usuario_perfis", joinColumns = {
+//			@JoinColumn = {}
+//	})
 	private List<Perfil> perfis = new ArrayList<>();
 
 	private static final long serialVersionUID = 1L;
